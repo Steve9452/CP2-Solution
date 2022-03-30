@@ -38,9 +38,6 @@
                 AnioNacimiento: 1963
                 );
 
-
-            
-
             Empleado1.showData();
             Empleado2.showData();
             System.Console.ReadLine();
@@ -72,7 +69,6 @@
 
         public double CalcularDeducciones()
         {   
-
             switch (Modalidad)
             {
                 case Modalidad.Profesional: return Salario -= Salario * Renta;
@@ -86,19 +82,19 @@
         public bool CalcularRetiro()
         {
             //System.Console.WriteLine(System.DateTime.Now.Year - AnioNacimiento);
-            if (this.Genero == Genero.Femenino && ((System.DateTime.Now.Year - AnioNacimiento) >= 55)) return true;
-            if (this.Genero == Genero.Masculino && ((System.DateTime.Now.Year - AnioNacimiento) >= 60)) return true;
+            if (Genero == Genero.Femenino && ((System.DateTime.Now.Year - AnioNacimiento) >= 55)) return true;
+            if (Genero == Genero.Masculino && ((System.DateTime.Now.Year - AnioNacimiento) >= 60)) return true;
             return false;
         }
 
         public void showData()
         {
             System.Console.WriteLine(
-                $"Nombre:{this.Name}\nSalario base:${this.Salario}\nModalidad:{this.Modalidad}\nISS:{this.ISSS}\nAFP:{this.AFP}\nRenta:{this.Renta}\nGenero:{this.Genero}\nEdad:{System.DateTime.Now.Year - AnioNacimiento}\nSalario final:${this.CalcularDeducciones()}"
-                
+                $"Nombre:{Name}\nSalario base:${Salario}\nModalidad:{Modalidad}\nISS:{ISSS}\nAFP:{AFP}\nRenta:{Renta}\nGenero:{Genero}\nEdad:{System.DateTime.Now.Year - AnioNacimiento}"                
                 );
-            System.Console.WriteLine(this.CalcularRetiro() ? "Si es apta para retiro" : "No es apto para retiro");
-            System.Console.WriteLine("=================");
+            System.Console.WriteLine($"---------------------\nSalario final:${CalcularDeducciones()}");
+            System.Console.WriteLine(CalcularRetiro() ? "Si es apta para retiro\n" : "No es apto para retiro\n");
+            System.Console.WriteLine("=======================");
         }
     }
 }
